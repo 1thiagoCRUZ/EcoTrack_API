@@ -19,7 +19,7 @@ namespace EcoTrack.Controllers
         public IActionResult Cadastrar([FromBody] CreateAguaDto dto)
         {
             var response = _service.CadastrarAgua(dto);
-            return CreatedAtAction(nameof(Cadastrar), new { id = response.Id }, response);
+            return Created($"/api/Recursos/{response.Id}", response);
         }
     }
 }
