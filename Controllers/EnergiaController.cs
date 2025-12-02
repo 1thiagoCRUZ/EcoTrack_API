@@ -21,7 +21,7 @@ namespace EcoTrack.Controllers
             try
             {
                 var response = _service.CadastrarEnergia(dto);
-                return CreatedAtAction(nameof(Cadastrar), new { id = response.Id }, response);
+                return Created($"/api/Recursos/{response.Id}", response);
             }
             catch (Exception ex)
             {
