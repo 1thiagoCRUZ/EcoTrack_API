@@ -1,4 +1,4 @@
-﻿using EcoTrack.DTOs;
+using EcoTrack.DTOs;
 using EcoTrack.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,8 +18,15 @@ namespace EcoTrack.Controllers
         [HttpPost]
         public IActionResult Cadastrar([FromBody] CreateResiduoDto dto)
         {
-            var response = _service.CadastrarResiduo(dto);
-            return Created($"/api/Recursos/{response.Id}", response);
+            try
+            {
+                var response = _service.CadastrarResiduo(dto);
+                return Created($"/api/Recursos/{response.Id}", response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { erro = ex.Message });
+            }
         }
     }
 }
