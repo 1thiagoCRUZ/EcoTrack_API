@@ -17,6 +17,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IRecursoRepository, RecursoRepository>();
 
 builder.Services.AddScoped<RecursoService>();
+builder.Services.AddScoped<RelatorioService>();
 
 var app = builder.Build();
 

@@ -5,10 +5,10 @@ namespace EcoTrack.DTOs
 {
     public class UpdateMetaDto
     {
-        [Required]
+        [Required(ErrorMessage = "O ID do recurso é obrigatório.")]
         public int RecursoId { get; set; }
 
-        [Range(0, double.MaxValue, ErrorMessage = "A meta deve ser positiva")]
+        [Range(0.1, double.MaxValue, ErrorMessage = "A nova meta deve ser maior que zero.")]
         public double NovaMeta { get; set; }
     }
 

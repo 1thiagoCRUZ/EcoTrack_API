@@ -9,10 +9,12 @@ namespace EcoTrack.Controllers
     public class RecursosController : ControllerBase
     {
         private readonly RecursoService _service;
+        private readonly RelatorioService _relatorioService;
 
-        public RecursosController(RecursoService service)
+        public RecursosController(RecursoService service, RelatorioService relatorioService)
         {
             _service = service;
+            _relatorioService = relatorioService;
         }
 
         [HttpPost("leitura")]
@@ -87,6 +89,21 @@ namespace EcoTrack.Controllers
             catch (Exception ex)
             {
                 return NotFound(new { erro = ex.Message });
+            }
+        }
+
+        [HttpGet("relatorio-financeiro")]
+        public IActionResult BaixarRelatorio()
+        {
+            try
+            {
+                var arquivoBytes = _relatorioService.GerarRelatorioFinanceiro();
+
+                return File(arquivoBytes, "text/csv", "EcoTrack_Relatorio_Custos.csv");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { erro = ex.Message });
             }
         }
     }
