@@ -36,7 +36,7 @@ O **EcoTrack** substitui o monitoramento manual de recursos por um sistema autom
 ### 1. Clonar o Repositório
 Abra o terminal e rode:
 ```bash
-git clone [https://github.com/1thiagoCRUZ/EcoTrack_API.git](https://github.com/1thiagoCRUZ/EcoTrack_API.git)
+git clone https://github.com/1thiagoCRUZ/EcoTrack_API.git
 cd EcoTrack_API
 ```
 
