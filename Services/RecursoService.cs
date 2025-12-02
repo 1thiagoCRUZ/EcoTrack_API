@@ -148,5 +148,31 @@ namespace EcoTrack.Services
                 })
             };
         }
+        public List<Recurso> ObterTodos()
+        {
+            return _repository.GetAll();
+        }
+
+        public Recurso? ObterPorId(int id)
+        {
+            return _repository.GetById(id);
+        }
+
+        public void AtualizarMeta(UpdateMetaDto dto)
+        {
+            var recurso = _repository.GetById(dto.RecursoId);
+            if (recurso == null) throw new Exception("Recurso não encontrado");
+
+            recurso.MetaConsumoMensal = dto.NovaMeta;
+            _repository.Update(recurso);
+        }
+
+        public void RemoverRecurso(int id)
+        {
+            var recurso = _repository.GetById(id);
+            if (recurso == null) throw new Exception("Recurso não encontrado");
+
+            _repository.Delete(id);
+        }
     }
 }
